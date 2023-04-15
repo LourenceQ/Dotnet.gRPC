@@ -7,8 +7,7 @@ namespace CountryService.Web.Services;
 
 public class CountryGrpcService : CountryServiceBase
 {
-    public override async Task GetAll(Empty request, IServerStreamWriter
-<CountryReply> responseStream, ServerCallContext context)
+    public override async Task GetAll(Empty request, IServerStreamWriter<CountryReply> responseStream, ServerCallContext context)
     {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
     }
@@ -17,8 +16,7 @@ public class CountryGrpcService : CountryServiceBase
     {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
     }
-    public override async Task<Empty> Delete(IAsyncStreamReader<CountryId
-   Request> requestStream, ServerCallContext context)
+    public override async Task<Empty> Delete(IAsyncStreamReader<CountryIdRequest> requestStream, ServerCallContext context)
     {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
     }
@@ -27,9 +25,9 @@ public class CountryGrpcService : CountryServiceBase
     {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
     }
-    public override async Task Create(IAsyncStreamReader<CountryCreation
-Request> requestStream, IServerStreamWriter<CountryCreationReply>
-responseStream, ServerCallContext context)
+    public override async Task Create(IAsyncStreamReader<CountryCreationRequest> requestStream
+        , IServerStreamWriter<CountryCreationReply> responseStream
+        , ServerCallContext context)
     {
         throw new RpcException(new Status(StatusCode.Unimplemented, ""));
     }
