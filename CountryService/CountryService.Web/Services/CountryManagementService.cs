@@ -41,8 +41,7 @@ public class CountryManagementService
 
     public async Task<CountryReply> GetAsync(CountryIdRequest country)
     {
-        return await Task.FromResult(_countries.FirstOrDefault(x => x.Id ==
-       country.Id));
+        return await Task.FromResult(_countries.FirstOrDefault(x => x.Id == country.Id));
     }
 
     public async Task DeleteAsync(IEnumerable<CountryIdRequest> countries)
@@ -64,16 +63,14 @@ public class CountryManagementService
         await Task.CompletedTask;
     }
 
-    public async Task<IEnumerable<CountryCreationReply>> CreateAsync(List
-<CountryCreationRequest> countries)
+    public async Task<IEnumerable<CountryCreationReply>> CreateAsync(List<CountryCreationRequest> countries)
     {
         var countryCreationReply = new CountryCreationReply();
         var newCountries = new List<CountryReply>();
         var count = _countries.Count;
         countries.ForEach(country =>
         {
-            var existingCountry = _countries.FirstOrDefault(x => x.Name ==
-           country.Name);
+            var existingCountry = _countries.FirstOrDefault(x => x.Name == country.Name);
             if (existingCountry == null)
             {
                 newCountries.Add(new CountryReply
@@ -82,15 +79,14 @@ public class CountryManagementService
                     Name = country.Name,
                     Description = country.Description,
                     Flag = country.Flag,
-                    CreateDate = Timestamp.FromDateTime(DateTime.
-               SpecifyKind(new DateTime(2021, 1, 2),
-               DateTimeKind.Utc))
+                    CreateDate = Timestamp.FromDateTime(DateTime.SpecifyKind(new DateTime(2021, 1, 2)
+                    , DateTimeKind.Utc))
                 });
             }
         });
+
         _countries.AddRange(newCountries);
-        return await Task.FromResult(newCountries.Select(x => new
-       CountryCreationReply
+        return await Task.FromResult(newCountries.Select(x => new CountryCreationReply
         { Id = x.Id, Name = x.Name }).ToList());
     }
 }
